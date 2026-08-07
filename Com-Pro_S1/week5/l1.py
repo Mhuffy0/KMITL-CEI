@@ -14,6 +14,7 @@ else:
     temp = ""
     for char in word:
         # Check if the character is lowercase
+        ##97~122 ranged is lowercase letter
         if 97 <= ord(char) <= 122:
             temp += chr(ord(char) - 32)
         else:
