@@ -22,7 +22,10 @@ else:
         if start_index != None:
             for j in range(max_count):
                 next_index = (start_index + j * step_length) % 26
-                result += lowercase[next_index] + '-'
+                if result == "":
+                    result += lowercase[next_index]
+                else:
+                    result += '-' + lowercase[next_index]
     
-    print(result[:-1])  # Remove the last -
+    print(result)
     print("===== End of program =====")

@@ -1,28 +1,29 @@
 print(" *** Maximum value ***")
 raw = input("Enter some numbers : ")
+stopped = False
 
-#simple put raw string to list 
-digit_list = [digit for digit in raw.split()]
+digit_list = raw.split()
+max_value = None
 
-#try convert to int
-for i in range(len(digit_list)):
-    try:
-        digit_list[i] = int(digit_list[i])
-    except ValueError:
-        digit_list[i] = None
-        
-result = digit_list[0]
-
-for i in digit_list:
-    if i is None or i is -1:
+for digit in digit_list:
+    if digit == "stop":
+        stopped = True
         break
-    
-    elif result < i:
-        result = i
+    try:
+        num = int(digit)
+        if num == -1:
+            stopped = True
+            break
         
-    elif result > i:
+        if max_value is None or num > max_value:
+            max_value = num
+    except ValueError:
         continue
-    
-    
-print("Max value =", result)
+
+
+if stopped or max_value is not None:
+    print(f"Max value = {max_value}")
+else:
+    print("Max value = None")
+
 print("===== End of program =====")
